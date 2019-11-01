@@ -1,0 +1,21 @@
+{
+  "name": "FranceMapTrain",
+  "version": "0.1.0",
+  "description": "Generation de fichiers selon une cartographie ferroviaire des données ouvertes du portail SNCF",
+  "main": "main.js",
+  "repository": "git@github.com:mgcarre/FranceMapTrain.git",
+  "author": "mgcarre <mathgb@gmail.com>",
+  "license": "GPL-2.0",
+  "private": false,
+  "dependencies": {
+    "@types/geojson": "^7946.0.7",
+    "args": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node main help"
+  }
+}
