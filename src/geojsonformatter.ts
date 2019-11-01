@@ -17,7 +17,6 @@ export function run(): GeoJSON.FeatureCollection {
         out.pkFin = common.parsePk(l.fields.pkf);
         out.statut = l.fields.statut;
         out.troncon = parseInt(l.fields.rg_troncon);
-        out.geometry = common.lookUpGeom(codeLigne, l.fields.pkd, l.fields.pkf, l.fields.rg_troncon);
         out.cantonnements = common.getCanton(codeLigne);
         out.electrifications = common.getElect(codeLigne);
         out.equipeeKVB = common.getKvb(codeLigne);
@@ -25,7 +24,6 @@ export function run(): GeoJSON.FeatureCollection {
         out.regimeExploitation = common.getRegime(codeLigne);
         out.typeLigne = common.getTypeLigne(codeLigne);
         out.vitesses = common.getVitesse(codeLigne);
-
         const feature = new Feature();
         feature.id = l.fields.idgaia;
         feature.properties = out;
