@@ -1,5 +1,5 @@
 export class LigneDetail {
-    detail: string;
+    detail: string | number;
     from: number;
     to: number;
 }

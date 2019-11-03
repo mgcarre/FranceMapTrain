@@ -10,7 +10,7 @@ export function run(): GeoJSON.FeatureCollection {
         const codeLigne = l.fields.code_ligne;
         console.log('Traitement de la ligne:', codeLigne)
         const out = new Ligne();
-        out.codeLigne = parseInt(l.fields.code_ligne);
+        out.codeLigne = parseInt(codeLigne);
         out.idGaia = l.fields.idgaia;
         out.nomLigne = l.fields.lib_ligne;
         out.pkDebut = common.parsePk(l.fields.pkd);
@@ -24,10 +24,11 @@ export function run(): GeoJSON.FeatureCollection {
         out.regimeExploitation = common.getRegime(codeLigne);
         out.typeLigne = common.getTypeLigne(codeLigne);
         out.vitesses = common.getVitesse(codeLigne);
+        out.zIndex = features.filter(cb => cb.properties.codeLigne === out.codeLigne).length + 1; // geometrie non scindee pour certaines grandes sections
         const feature = new Feature();
         feature.id = l.fields.idgaia;
         feature.properties = out;
-        feature.geometry = common.lookUpGeom(l.fields.code_ligne, l.fields.pkd, l.fields.pkf, l.fields.rg_troncon);
+        feature.geometry = common.lookUpGeom(l.fields.code_ligne, l.fields.pkd, l.fields.pkf);
         features.push(feature);
     })
     features.sort((a, b) => a.properties.codeLigne - b.properties.codeLigne);

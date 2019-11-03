@@ -1,6 +1,6 @@
 import { LigneDetail } from "./ligne.detail.class";
 
-enum Statuts {
+enum EStatuts {
     "Déclassée vendue",
     "Exploitée",
     "Déclassée non vendue",
@@ -32,4 +32,7 @@ export class Ligne {
     typeLigne?: LigneDetail[];
     ligneEquipeeRadio?: LigneDetail;
     regimeExploitation?: LigneDetail[];
+    zIndex?: number;
+    licence = 'ODBL';
+    source = 'Portail Open Data SNCF : https://data.sncf.com/pages/cgu/';
 }

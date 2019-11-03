@@ -85,14 +85,13 @@ export function getElect(ligne: string): LigneDetail[] {
     });
 }
 
-const checkEqualPk = (pk1: string, pk2: string): boolean => {
-    return parsePk(pk1) === parsePk(pk2);
+
+const getFormes = (ligne: string, pkd: string, pkf: string): DataObjectForme[] => {
+    return formes.filter((forme: DataObjectForme) => forme.fields.code_ligne === ligne && (parsePk(pkd) === parsePk(forme.fields.pk_debut_r) || parsePk(pkf) === parsePk(forme.fields.pk_fin_r)));
 }
 
-export const lookUpGeom = (ligne: string, pkd: string, pkf: string, troncon: string): GeoJSON.LineString | GeoJSON.MultiLineString => {
-    const formeLignes = formes.filter((forme: DataObjectForme) => {
-        return forme.fields.code_ligne === ligne && checkEqualPk(pkd, forme.fields.pk_debut_r) === true && checkEqualPk(pkf, forme.fields.pk_fin_r) === true;
-    })
+export const lookUpGeom = (ligne: string, pkd: string, pkf: string): GeoJSON.LineString | GeoJSON.MultiLineString => {
+    const formeLignes = getFormes(ligne, pkd, pkf);
     if (formeLignes.length > 0) {
         const forme = formeLignes[0].fields.geo_shape
         forme.coordinates.map((coords: number[]) => {

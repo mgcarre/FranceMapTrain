@@ -16,7 +16,7 @@ export function run() {
         out.pkFin = common.parsePk(l.fields.pkf);
         out.statut = l.fields.statut;
         out.troncon = parseInt(l.fields.rg_troncon);
-        out.geometry = common.lookUpGeom(codeLigne, l.fields.pkd, l.fields.pkf, l.fields.rg_troncon);
+        out.geometry = common.lookUpGeom(codeLigne, l.fields.pkd, l.fields.pkf);
         out.cantonnements = common.getCanton(codeLigne);
         out.electrifications = common.getElect(codeLigne);
         out.equipeeKVB = common.getKvb(codeLigne);
