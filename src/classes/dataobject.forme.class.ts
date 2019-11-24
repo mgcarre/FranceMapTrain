@@ -1,7 +1,7 @@
-import { DataObject } from "./dataobject.class";
+import { IDataObject } from "../interfaces/dataobject.interface";
 import { DataForme } from "./dataforme.class";
 
-export class DataObjectForme implements DataObject {
+export class DataObjectForme implements IDataObject {
     datasetid: string;
     recordid: string;
     fields: DataForme;

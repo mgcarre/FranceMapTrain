@@ -12,10 +12,12 @@
     "args": "^5.0.1"
   },
   "devDependencies": {
+    "@mapbox/geojsonhint": "^3.0.0",
     "@types/node": "^12.12.3"
   },
   "scripts": {
     "build": "tsc",
     "start": "node main help"
-  }
+  },
+  "types": "./@types/index.d.ts"
 }

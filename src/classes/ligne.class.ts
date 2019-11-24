@@ -1,4 +1,5 @@
 import { LigneDetail } from "./ligne.detail.class";
+import { DataLigne } from "./dataligne.class";
 
 enum EStatuts {
     "Déclassée vendue",
@@ -35,4 +36,12 @@ export class Ligne {
     zIndex?: number;
     licence = 'ODBL';
     source = 'Portail Open Data SNCF : https://data.sncf.com/pages/cgu/';
+
+    constructor(ligne: DataLigne) {
+        this.codeLigne = parseInt(ligne.code_ligne);
+        this.idGaia = ligne.idgaia;
+        this.nomLigne = ligne.lib_ligne;
+        this.statut = ligne.statut;
+        this.troncon = parseInt(ligne.rg_troncon);
+    }
 }

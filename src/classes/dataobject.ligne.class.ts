@@ -1,10 +1,10 @@
 import { DataLigne } from "./dataligne.class";
-import { DataForme } from "./dataforme.class";
+import { IDataObject } from "../interfaces/dataobject.interface";
 
-export class DataObject {
+export class DataObjectLigne implements IDataObject {
     datasetid: string;
     recordid: string;
-    fields: DataLigne | DataForme;
+    fields: DataLigne;
     geometry: GeoJSON.Geometry;
     record_timestamp: string;
 }
