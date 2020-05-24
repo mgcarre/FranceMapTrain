@@ -1,8 +1,6 @@
-import { Ligne } from "./classes/ligne.class"
 import { Injector } from "./classes/injector.class";
 import { Reader } from "./utils/reader";
 import { Parser } from "./utils/parser";
-import { Feature } from "./classes/feature.class";
 
 export function run(dir: string, format: string): any {
     const r = new Reader(dir);
@@ -20,6 +18,5 @@ export function run(dir: string, format: string): any {
         return { "type": "FeatureCollection", features };
     }
     if (format === 'geojson+pk') {
-        const geometries = (r.lignes.map(ligne => new Injector(ligne, p).toGeoJSON())).sort((a, b) => a.properties.codeLigne - b.properties.codeLigne);
     }
 }
